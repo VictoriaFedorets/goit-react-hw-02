@@ -1,6 +1,8 @@
-export default function Options({ onUpdate, resetClicks }) {
+import css from "./Options.module.css";
+
+export default function Options({ onUpdate, resetClicks, totalFeedback }) {
   return (
-    <div>
+    <div className={css.btnClick}>
       <button type="button" onClick={() => onUpdate("good")}>
         Good
       </button>
@@ -10,9 +12,11 @@ export default function Options({ onUpdate, resetClicks }) {
       <button type="button" onClick={() => onUpdate("bad")}>
         Bad
       </button>
-      <button type="button" onClick={() => resetClicks()}>
-        Reset
-      </button>
+      {totalFeedback > 0 && (
+        <button type="button" onClick={() => resetClicks()}>
+          Reset
+        </button>
+      )}
     </div>
   );
 }
